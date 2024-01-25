@@ -18,16 +18,18 @@ class MyString:
         return self._value[-1] == "."
 
     def is_question(self):
-        return self._value[-1] == "?"
+        return self._value[-1] == "?"   
 
     def is_exclamation(self):
         return self._value[-1] == "!"
 
-    def count_sentences(self):
-        value = self.value
-        for punctuation in ['!', '?']:
-            value = value.replace(punctuation, '.')
-        sentences = [
-            sentence for sentence in value.split('.') if sentence
-        ]
+    def count_sentences(self) -> int:
+        """
+        Count the number of sentences in a given string.
+
+        Returns:
+            The number of sentences in the given string.
+        """
+        value = self.value.replace('!', '.').replace('?', '.')
+        sentences = [sentence for sentence in value.split('.') if sentence]
         return len(sentences)
